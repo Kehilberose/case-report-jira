@@ -1,0 +1,44 @@
+main {
+	margin: 0 auto;
+	width: 80%;
+	min-width: 1024px;
+	text-align: center;
+	font-size: 16px;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+	margin-bottom: 15px;
+}
+
+h2 {
+	font-size: 26px;
+}
+
+.text {
+	padding: 5px 10px;
+	border-radius: 5px;
+	border-width: 1px;
+	border-color: black;
+}
+
+.aui-button {
+	margin-top: 5px;
+	padding: 5px 15px;
+	margin-right: 5px;
+	margin-left: 5px;
+	text-align: center;
+	border-radius: 5px;
+	border-color: #ffaa;
+	border-width: 0px;
+	background-color: #4b79c9;
+	color: white;
+	font-weight: bold;
+	text-shadow: 2px 1px 1px #000;
+	transition: 0.2s;
+}
+
+.aui-button:hover {
+	cursor: pointer;
+	background-color: #7999d4;
+}
