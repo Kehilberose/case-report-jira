@@ -1,64 +1,69 @@
-
-
-        <ul>
-            <li>Фильтр копируется в буфер после нажатия на кнопку "Скопировать"</li>
-            <li><a href="https://jira.svc.iptv.rt.ru/issues/?jql=" target="_blank">метнуться в жиру</a></li>
-        </ul>
+<!DOCTYPE html>
+<head>
+	<title>Filters</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css">
+</head>
+<body>
+	<main>
+	    <div>
+            <p>Фильтр копируется в буфер после нажатия на кнопку "Скопировать"</p>
+            <p><a href="#">JIRA</a></p>
+        </div>
         
-        <h1>Ну шо, за какой день буим делать отчет?</h1>
-        <br>
-        <button class="aui-button aui-button-primary" onclick="dayMinus()" style="width: 35px;">
+        <h1>Ну что, за какой день будем делать отчет?</h1>
+        <button class="aui-button aui-button-primary" onclick="dayMinus()" style="width: 50px;">
             <span>-</span>
         </button><button class="aui-button aui-button-primary" onclick="generateDate()" style="width: 225px;">
             <span>GENERATE FOR </span> <span id="currentDate">test</span>
-        </button><button class="aui-button aui-button-primary" onclick="dayPlus()" style="width: 35px;">
+        </button><button class="aui-button aui-button-primary" onclick="dayPlus()" style="width: 50px;">
             <span>+</span>
         </button>
         
-        <h2>Фильтр для поступивших кейсов:</h2><br>
+        <h2>Фильтр для поступивших кейсов:</h2>
         <input readonly class="text" type="text" value="PRESS GENERATE BUTTON" id="filterRecieved" style="margin-bottom: 10px; width: 35%; padding-left: 5px; padding-right: 5px;">
-        <br>
         <div class="tooltip">
         <button class="aui-button aui-button-primary" onclick="myFunction('filterRecieved')">
             <!--<span class="tooltiptext" id="filterRecieved_Tooltip">Копировать в буфер</span>-->
             <span>Скопировать</span>
             </button>
         </div>
-        <br>
         
-        <h2>Фильтр для обработанных кейсов:</h2><br>
+        
+        <h2>Фильтр для обработанных кейсов:</h2>
         <input readonly class="text" type="text" value="PRESS GENERATE BUTTON" id="filterProcessed" style="margin-bottom: 10px; width: 35%; padding-left: 5px; padding-right: 5px;">
-        <br>
+        
         <div class="tooltip">
         <button class="aui-button aui-button-primary" onclick="myFunction('filterProcessed')">
             <!--<span class="tooltiptext" id="filterProcessed_Tooltip">Копировать в буфер</span>-->
             <span>Скопировать</span>
             </button>
         </div>
-        <br>
         
         
-        <h2>Закрыто на 2лтп:</h2><br>
+        
+        <h2>Закрыто на 2лтп:</h2>
         <input readonly class="text" type="text" value="PRESS GENERATE BUTTON" id="filter2ltp" style="margin-bottom: 10px; width: 35%; padding-left: 5px; padding-right: 5px;">
-        <br>
+        
         <div class="tooltip">
         <button class="aui-button aui-button-primary" onclick="myFunction('filter2ltp')">
             <!--<span class="tooltiptext" id="2ltp_Tooltip">Копировать в буфер</span>-->
             <span>Скопировать</span>
             </button>
         </div>
-        <br>
         
-        <h2>Закрыто на 3лтп:</h2><br>
+        
+        <h2>Закрыто на 3лтп:</h2>
         <input readonly class="text" type="text" value="PRESS GENERATE BUTTON" id="filter3ltp" style="margin-bottom: 10px; width: 35%; padding-left: 5px; padding-right: 5px;">
-        <br>
+        
         <div class="tooltip">
         <button class="aui-button aui-button-primary" onclick="myFunction('filter3ltp')">
             <!--<span class="tooltiptext" id="3ltp_Tooltip">Копировать в буфер</span>-->
             <span>Скопировать</span>
             </button>
         </div>
-        <br>
+        
         
         <script>
         
@@ -135,4 +140,5 @@
         }
         
         </script>
-
+    </main>
+</body>
