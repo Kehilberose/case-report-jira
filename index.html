@@ -1,144 +1,58 @@
 <!DOCTYPE html>
+
 <head>
 	<title>Filters</title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css">
 </head>
+
 <body>
 	<main>
-	    <div>
-            <p>Фильтр копируется в буфер после нажатия на кнопку "Скопировать"</p>
-            <p><a href="#">JIRA</a></p>
-        </div>
-        
-        <h1>Ну что, за какой день будем делать отчет?</h1>
-        <button class="aui-button aui-button-primary" onclick="dayMinus()" style="width: 50px;">
-            <span>-</span>
-        </button><button class="aui-button aui-button-primary" onclick="generateDate()" style="width: 225px;">
-            <span>GENERATE FOR </span> <span id="currentDate">test</span>
-        </button><button class="aui-button aui-button-primary" onclick="dayPlus()" style="width: 50px;">
-            <span>+</span>
-        </button>
-        
-        <h2>Фильтр для поступивших кейсов:</h2>
-        <input readonly class="text" type="text" value="PRESS GENERATE BUTTON" id="filterRecieved" style="margin-bottom: 10px; width: 35%; padding-left: 5px; padding-right: 5px;">
-        <div class="tooltip">
-        <button class="aui-button aui-button-primary" onclick="myFunction('filterRecieved')">
-            <!--<span class="tooltiptext" id="filterRecieved_Tooltip">Копировать в буфер</span>-->
-            <span>Скопировать</span>
-            </button>
-        </div>
-        
-        
-        <h2>Фильтр для обработанных кейсов:</h2>
-        <input readonly class="text" type="text" value="PRESS GENERATE BUTTON" id="filterProcessed" style="margin-bottom: 10px; width: 35%; padding-left: 5px; padding-right: 5px;">
-        
-        <div class="tooltip">
-        <button class="aui-button aui-button-primary" onclick="myFunction('filterProcessed')">
-            <!--<span class="tooltiptext" id="filterProcessed_Tooltip">Копировать в буфер</span>-->
-            <span>Скопировать</span>
-            </button>
-        </div>
-        
-        
-        
-        <h2>Закрыто на 2лтп:</h2>
-        <input readonly class="text" type="text" value="PRESS GENERATE BUTTON" id="filter2ltp" style="margin-bottom: 10px; width: 35%; padding-left: 5px; padding-right: 5px;">
-        
-        <div class="tooltip">
-        <button class="aui-button aui-button-primary" onclick="myFunction('filter2ltp')">
-            <!--<span class="tooltiptext" id="2ltp_Tooltip">Копировать в буфер</span>-->
-            <span>Скопировать</span>
-            </button>
-        </div>
-        
-        
-        <h2>Закрыто на 3лтп:</h2>
-        <input readonly class="text" type="text" value="PRESS GENERATE BUTTON" id="filter3ltp" style="margin-bottom: 10px; width: 35%; padding-left: 5px; padding-right: 5px;">
-        
-        <div class="tooltip">
-        <button class="aui-button aui-button-primary" onclick="myFunction('filter3ltp')">
-            <!--<span class="tooltiptext" id="3ltp_Tooltip">Копировать в буфер</span>-->
-            <span>Скопировать</span>
-            </button>
-        </div>
-        
-        
-        <script>
-        
-        function myFunction(x) {
-            var copyText = document.getElementById(x);
-            copyText.select();
-            copyText.setSelectionRange(0, 99999);
-            document.execCommand("copy");
-            
-        }
-        
-        projectName = "TEST";
-        today = new Date();
-        yesterday = new Date();
-        today.setDate(today.getDate());
-        yesterday.setDate(yesterday.getDate() - 1);
-        todayDateFormated = new Date(today.getTime() - (today.getTimezoneOffset() * 60000)).toISOString().substring(0, 10);
-        yesterdayDateFormated = new Date(yesterday.getTime() - (yesterday.getTimezoneOffset() * 60000)).toISOString().substring(0, 10);
-        document.getElementById('currentDate').innerText = yesterdayDateFormated;
-        
-        let dayCounter = 0;
-        function dayPlus() {
-            dayCounter++;
-            today = new Date();
-            yesterday = new Date();
-            today.setDate(today.getDate() + dayCounter);
-            yesterday.setDate(yesterday.getDate() - 1 + dayCounter);
-            todayDateFormated = new Date(today.getTime() - (today.getTimezoneOffset() * 60000)).toISOString().substring(0, 10);
-            yesterdayDateFormated = new Date(yesterday.getTime() - (yesterday.getTimezoneOffset() * 60000)).toISOString().substring(0, 10);
-            document.getElementById('currentDate').innerText = yesterdayDateFormated;
-        }
-        function dayMinus() {
-            dayCounter--;
-            today = new Date();
-            yesterday = new Date();
-            today.setDate(today.getDate() + dayCounter);
-            yesterday.setDate(yesterday.getDate() - 1 + dayCounter);
-            todayDateFormated = new Date(today.getTime() - (today.getTimezoneOffset() * 60000)).toISOString().substring(0, 10);
-            yesterdayDateFormated = new Date(yesterday.getTime() - (yesterday.getTimezoneOffset() * 60000)).toISOString().substring(0, 10);
-            document.getElementById('currentDate').innerText = yesterdayDateFormated;
-        }
-        function generateTodayDate() {
-            today = new Date();
-            today.setDate(today.getDate() + dayCounter);
-            todayDateFormated = new Date(today.getTime() - (today.getTimezoneOffset() * 60000)).toISOString().substring(0, 10);
-            return todayDateFormated;
-        }
-        function generateYesterdayDate() {
-            yesterday = new Date();
-            yesterday.setDate(yesterday.getDate() - 1 + dayCounter);
-            yesterdayDateFormated = new Date(yesterday.getTime() - (yesterday.getTimezoneOffset() * 60000)).toISOString().substring(0, 10);
-            return yesterdayDateFormated;
-        }
-        function generateDate() {
-            document.getElementById('filterRecieved').value = `project = ${projectName} AND created >= ` 
-            + yesterdayDateFormated 
-            + " AND created <= " 
-            + todayDateFormated 
-            + " ORDER BY created DESC";
-            document.getElementById('filterProcessed').value = `project = ${projectName} AND updated >= ` 
-            + yesterdayDateFormated 
-            + " AND updated <= " 
-            + todayDateFormated 
-            + " ORDER BY updated DESC";
-            document.getElementById('filter2ltp').value = `project = ${projectName} AND status was not OnTrack AND created >= ` 
-            + yesterdayDateFormated + " AND created <= " 
-            + todayDateFormated 
-            + " and status = done ORDER BY created ASC";
-            document.getElementById('filter3ltp').value = `project = ${projectName} AND status was OnTrack AND created >= ` 
-            + yesterdayDateFormated 
-            + " AND created <= " 
-            + todayDateFormated 
-            + " and status = done ORDER BY created ASC";
-        }
-        
-        </script>
-    </main>
+		<div>
+			<p>Фильтр копируется в буфер после нажатия на кнопку "Скопировать"</p>
+			<p><a href="#">JIRA</a></p>
+		</div>
+		<h1>Ну что, за какой день будем делать отчет?</h1>
+		<button class="aui-button aui-button-primary" onclick="dayMinus()" style="width: 50px;">
+			<span>-</span>
+		</button><button class="aui-button aui-button-primary" onclick="generateDate()" style="width: 225px;">
+			<span>GENERATE FOR </span> <span id="currentDate">test</span>
+		</button><button class="aui-button aui-button-primary" onclick="dayPlus()" style="width: 50px;">
+			<span>+</span>
+		</button>
+		<h2>Фильтр для поступивших кейсов:</h2>
+		<input readonly class="text" type="text" value="PRESS GENERATE BUTTON" id="filterRecieved" style="margin-bottom: 10px; width: 35%; padding-left: 5px; padding-right: 5px;">
+		<div class="tooltip">
+			<button class="aui-button aui-button-primary" onclick="myFunction('filterRecieved')">
+				<!--<span class="tooltiptext" id="filterRecieved_Tooltip">Копировать в буфер</span>-->
+				<span>Скопировать</span>
+			</button>
+		</div>
+		<h2>Фильтр для обработанных кейсов:</h2>
+		<input readonly class="text" type="text" value="PRESS GENERATE BUTTON" id="filterProcessed" style="margin-bottom: 10px; width: 35%; padding-left: 5px; padding-right: 5px;">
+		<div class="tooltip">
+			<button class="aui-button aui-button-primary" onclick="myFunction('filterProcessed')">
+				<!--<span class="tooltiptext" id="filterProcessed_Tooltip">Копировать в буфер</span>-->
+				<span>Скопировать</span>
+			</button>
+		</div>
+		<h2>Закрыто на 2лтп:</h2>
+		<input readonly class="text" type="text" value="PRESS GENERATE BUTTON" id="filter2ltp" style="margin-bottom: 10px; width: 35%; padding-left: 5px; padding-right: 5px;">
+		<div class="tooltip">
+			<button class="aui-button aui-button-primary" onclick="myFunction('filter2ltp')">
+				<!--<span class="tooltiptext" id="2ltp_Tooltip">Копировать в буфер</span>-->
+				<span>Скопировать</span>
+			</button>
+		</div>
+		<h2>Закрыто на 3лтп:</h2>
+		<input readonly class="text" type="text" value="PRESS GENERATE BUTTON" id="filter3ltp" style="margin-bottom: 10px; width: 35%; padding-left: 5px; padding-right: 5px;">
+		<div class="tooltip">
+			<button class="aui-button aui-button-primary" onclick="myFunction('filter3ltp')">
+				<!--<span class="tooltiptext" id="3ltp_Tooltip">Копировать в буфер</span>-->
+				<span>Скопировать</span>
+			</button>
+		</div>
+	</main>
+	<script type="text/javascript" src="script.js"></script>
 </body>
