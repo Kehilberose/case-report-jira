@@ -49,14 +49,3 @@ footer {
   cursor: pointer;
   background-color: #7999d4;
 }
-
-.github-logo {
-  width: 100px;
-}
-
-.back-to {
-  display: block;
-  width: 300px;
-  margin: 0 auto;
-  margin-top: 50px;
-}
